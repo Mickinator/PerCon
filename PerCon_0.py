@@ -521,7 +521,7 @@ def PerCon():
     print(' --- Knopf 1 - 8 fuer Sets 1 - 8 ---')
     print(' --- Knopf 9 fuer ENDE ---')
     print(' --- Knopf 10 fuer START ---')
-    pygame.mixer.music.load('/home/pi/PerCon/sets/right_set.mp3')
+    pygame.mixer.music.load('/home/pi/PerCon/sets/choose_set.mp3')
     spielen()
     while GPIO.input(18) != 0:
 # -------------------- Setwahl ----------------------
@@ -638,7 +638,7 @@ def PerCon():
     print(' --- Bitte Knopf 2 für rückwärts ---')
     print(' --- Knopf 9 fuer EXIT zur Setwahl ---')
     print()
-    pygame.mixer.music.load('/home/pi/PerCon/sets/right_song.mp3')
+    pygame.mixer.music.load('/home/pi/PerCon/sets/start_song.mp3')
     spielen()                         # --Jetzt gehts los ---
     time.sleep(0.5)
 # -----------------------Songwahl -------------------        
@@ -687,6 +687,7 @@ def PerCon():
                 print('Vol Pb  = ', shn["L" + str(z+1)].value)          
 # ---------akt Song spielen -----------------------           
             spiel2()
+            time.sleep(0.5)
 # ----------------------- Knob 2 --rueckwaerts-----------------                   
         if GPIO.input(22) == 0:   # Song -1      verwendet verwendet D E F
             z -= 1
@@ -706,6 +707,7 @@ def PerCon():
             sz = shn["C" + str(z+1)].value
             sn = shn["A" + str(z+1)].value
             vzy = shn["I" + str(z+1)].value          # Vol Zynthian aus Sheet1
+            print()
             print('SongNr=', sn, sz)
             pygame.mixer.music.load('/home/pi/PerCon/audio/' + sz)
             with mido.open_output("USB MIDI Interface MIDI 1") as outport:
@@ -725,6 +727,7 @@ def PerCon():
                 pygame.mixer.music.set_volume(shn["L" + str(z+1)].value)      # Start Volume Playback   
                 print('Vol Pb  = ', shn["L" + str(z+1)].value)       
             spiel2() #akt Song spielen
+            time.sleep(0.5)
             print()
 #-------------------Knob 3 --------------------------------------------        
         if GPIO.input(27) == 0:
@@ -764,7 +767,7 @@ def PerCon():
             print(' --- Setwahl-Modus ---')
             print(' --- Knopf 1 - 8 fuer Sets 1 - 8 ---')
             print(' --- Knopf 9 fuer ENDE ---')
-            pygame.mixer.music.load('/home/pi/PerCon/sets/right_set.mp3')
+            pygame.mixer.music.load('/home/pi/PerCon/sets/choose_set.mp3')
             spielen()
             time.sleep(0.5)
             pygame.mixer.pause()
